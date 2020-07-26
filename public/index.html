@@ -5,7 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <title>Orinoco - World of Teddies</title>
 </head>
@@ -13,18 +18,40 @@
 <body>
 
     <header>
-        <?xml version="1.0" standalone="no"?><svg class="topsvg" xmlns="http://www.w3.org/2000/svg"
+        <?xml version="1.0" standalone="no"?><svg class="wave" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 200">
-            <path fill="#a2d9ff" fill-opacity="1"
+            <path fill="#fe9cd6" fill-opacity="1"
                 d="M0,192L80,165.3C160,139,320,85,480,85.3C640,85,800,139,960,149.3C1120,160,1280,128,1360,112L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
             </path>
         </svg>
-        <div class="logo"></div>
-        <nav>
-            <a href="" class="home">Home</a>
-            <a href="" class="shoppingcart">Shopping Cart</a>
 
+        <nav class="navbar navbar-expand-md">
+
+
+            <a class="navbar-brand" href="#">Logo</a>
+            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
+                data-target="#main-navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navigation">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shopping cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
+
     </header>
     <main>
         <p class="hello">Hello World of teddies</p>
@@ -41,6 +68,20 @@
 
 </body>
 
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+<!--my scripts bellow-->
 <script src="js/index.js">async</script>
 
 </html>

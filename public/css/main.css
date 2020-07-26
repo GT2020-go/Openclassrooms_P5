@@ -5,8 +5,6 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url(c:\Users\gaeta\Documents\OPENCLASSROOMS\WEBDEV\P5\JWDP5\public\sass\layout\header.css);
-@import url(c:\Users\gaeta\Documents\OPENCLASSROOMS\WEBDEV\P5\JWDP5\public\sass\layout\footer.css);
 html {
   line-height: 1.15;
   /* 1 */
@@ -337,5 +335,15 @@ template {
    */
 [hidden] {
   display: none;
+}
+
+.navbar {
+  background-color: #fe9cd6;
+}
+
+.wave {
+  position: absolute;
+  top: -5%;
+  z-index: -1000;
 }
 /*# sourceMappingURL=main.css.map */
