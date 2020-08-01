@@ -340,4 +340,10 @@ template {
 .navbar {
   background-color: #fe9cd6;
 }
+
+footer {
+  position: bottom;
+  height: 200px;
+  background-color: #fe9cd6;
+}
 /*# sourceMappingURL=main.css.map */
