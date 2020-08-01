@@ -338,12 +338,30 @@ template {
 }
 
 .navbar {
-  background-color: #fe9cd6;
+  background: #83cefa;
+  background: linear-gradient(0deg, #83cefa 0%, #53b2fd 100%);
+  box-shadow: 0px 0px 10px 2px rgba(0, 117, 209, 0.75);
+}
+
+.navbar a {
+  color: white;
+  font-size: medium;
+}
+
+.navbar .nav-link.active {
+  background: #229fef;
 }
 
 footer {
   position: bottom;
-  height: 200px;
-  background-color: #fe9cd6;
+  height: 50px;
+  background: #6045c6;
+  background: linear-gradient(0deg, #6045c6 0%, #b67bff 100%);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+}
+
+.logo {
+  height: 2em;
+  width: 2em;
 }
 /*# sourceMappingURL=main.css.map */
