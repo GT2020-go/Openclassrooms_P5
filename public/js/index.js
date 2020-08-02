@@ -41,18 +41,22 @@ fetch('api/teddies')
         imageContainer.setAttribute("src", teddy.imageUrl)
         imageWrap.appendChild(imageContainer)
 
+
+
         const infoWrap = document.createElement("figcaption")
         infoWrap.setAttribute("class", "info-wrap")
-        imageContainer.appendChild(infoWrap)
+        cardContainer.appendChild(infoWrap)
 
 
         const teddyName = document.createElement("h4")
         teddyName.setAttribute("class", "title")
         teddyName.innerHTML = teddy.name
+        infoWrap.appendChild(teddyName)
 
         const teddyDescription = document.createElement("p")
         teddyDescription.setAttribute("class", "desc")
         teddyDescription.innerHTML = teddy.description
+        infoWrap.appendChild(teddyDescription)
 
     }));
 
