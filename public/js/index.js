@@ -8,6 +8,10 @@ fetch('api/teddies')
         div.setAttribute("class", "name")
         div.innerHTML = 'Name: ' + teddy.name + ' ' + teddy.price + 'EUR'
 
+        const a = document.createElement("a")
+        a.setAttribute("class", "btn btn-primary btn-lg")
+        a.innerHTML = 'Add to cart'
+
         const img = document.createElement("img")
         img.setAttribute("src", teddy.imageUrl)
 
@@ -16,6 +20,7 @@ fetch('api/teddies')
         divDescrip.innerHTML = teddy.description
 
         mainContainer.appendChild(div);
+        mainContainer.appendChild(a);
         mainContainer.appendChild(img);
         mainContainer.appendChild(divDescrip);
     }));
