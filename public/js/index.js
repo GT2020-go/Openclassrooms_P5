@@ -43,9 +43,13 @@ fetch('api/teddies')
         bottomWrap.setAttribute("class", "bottom-wrap")
         cardContainer.appendChild(bottomWrap)
 
+
+        const productUrl = new URL('/product.html?id=' + teddy._id, 'http://localhost:3000') //update product url with id
+
+
         const orderButton = document.createElement("a")
         orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
-        orderButton.setAttribute("href", "#") //replace # with link to product page here
+        orderButton.setAttribute("href", productUrl) //replace # with link to product page here
         orderButton.innerHTML = "Choose color"
         bottomWrap.appendChild(orderButton)
 
@@ -55,22 +59,3 @@ fetch('api/teddies')
         bottomWrap.appendChild(teddyPrice)
 
     }));
-
-
-
-
-// < div class="col-md-4" >
-//     <figure class="card card-product">
-//         <div class="img-wrap"><img src="https://s9.postimg.org/tupxkvfj3/image.jpg"></div>
-//             <figcaption class="info-wrap">
-//                 <h4 class="title">Another name of item</h4>
-//                 <p class="desc">Some small description goes here</p>
-// 		</figcaption>
-//             <div class="bottom-wrap">
-//                 <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>
-//                 <div class="price-wrap h5">
-//                     <span class="price-new">$1280</span> <del class="price-old">$1980</del>
-//                 </div> <!-- price-wrap.// -->
-// 		</div> <!-- bottom-wrap.// -->
-// 	</figure>
-// </div> <!--col // --></div>
