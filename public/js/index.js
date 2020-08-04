@@ -46,7 +46,7 @@ fetch('api/teddies')
         const orderButton = document.createElement("a")
         orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
         orderButton.setAttribute("href", "#") //replace # with link to product page here
-        orderButton.innerHTML = "Order me"
+        orderButton.innerHTML = "Choose color"
         bottomWrap.appendChild(orderButton)
 
         const teddyPrice = document.createElement("h5")
