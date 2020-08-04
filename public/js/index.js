@@ -2,29 +2,9 @@ fetch('api/teddies')
     .then(data => data.json())
 
     .then(teddies => teddies.map(teddy => {
-        const mainContainer = document.getElementById("myData");
-        // const div = document.createElement("div")
-        // div.setAttribute("id", teddy._id)
-        // div.setAttribute("class", "name")
-        // div.innerHTML = 'Name: ' + teddy.name + ' ' + teddy.price + 'EUR'
+        const mainContainer = document.getElementById("myData")
 
-        // const a = document.createElement("a")
-        // a.setAttribute("class", "btn btn-primary btn-lg")
-        // a.innerHTML = 'Add to cart'
-
-        // const imageContainer = document.getElementById("imageTeddy");
-        // const img = document.createElement("img")
-        // img.setAttribute("src", teddy.imageUrl)
-
-        // const divDescrip = document.createElement("div")
-        // divDescrip.setAttribute("class", "description")
-        // divDescrip.innerHTML = teddy.description
-
-        // mainContainer.appendChild(div);
-        // mainContainer.appendChild(a);
-        // imageContainer.appendChild(img);
-        // mainContainer.appendChild(divDescrip);
-
+        //Creation des Cartes produit
         const columnContainer = document.createElement("div")
         columnContainer.setAttribute("class", "col-md-4")
         mainContainer.appendChild(columnContainer)
@@ -33,16 +13,16 @@ fetch('api/teddies')
         cardContainer.setAttribute("class", "card card-product")
         columnContainer.appendChild(cardContainer)
 
+        //imageWrap - conteneur image
         const imageWrap = document.createElement("div")
         imageWrap.setAttribute("class", "img-wrap")
-        cardContainer.appendChild(imageWrap);
+        cardContainer.appendChild(imageWrap)
 
         const imageContainer = document.createElement("img")
         imageContainer.setAttribute("src", teddy.imageUrl)
         imageWrap.appendChild(imageContainer)
 
-
-
+        //infoWrap - conteneur de text sous image
         const infoWrap = document.createElement("figcaption")
         infoWrap.setAttribute("class", "info-wrap")
         cardContainer.appendChild(infoWrap)
@@ -53,10 +33,26 @@ fetch('api/teddies')
         teddyName.innerHTML = teddy.name
         infoWrap.appendChild(teddyName)
 
-        const teddyDescription = document.createElement("p")
-        teddyDescription.setAttribute("class", "desc")
-        teddyDescription.innerHTML = teddy.description
-        infoWrap.appendChild(teddyDescription)
+        // const teddyDescription = document.createElement("p")
+        // teddyDescription.setAttribute("class", "desc")
+        // teddyDescription.innerHTML = teddy.description
+        // infoWrap.appendChild(teddyDescription)
+
+        //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
+        const bottomWrap = document.createElement("div")
+        bottomWrap.setAttribute("class", "bottom-wrap")
+        cardContainer.appendChild(bottomWrap)
+
+        const orderButton = document.createElement("a")
+        orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
+        orderButton.setAttribute("href", "#") //replace # with link to product page here
+        orderButton.innerHTML = "Order me"
+        bottomWrap.appendChild(orderButton)
+
+        const teddyPrice = document.createElement("h5")
+        teddyPrice.setAttribute("class", "price")
+        teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
+        bottomWrap.appendChild(teddyPrice)
 
     }));
 
@@ -69,10 +65,6 @@ fetch('api/teddies')
 //             <figcaption class="info-wrap">
 //                 <h4 class="title">Another name of item</h4>
 //                 <p class="desc">Some small description goes here</p>
-//                 <div class="rating-wrap">
-//                     <div class="label-rating">132 reviews</div>
-//                     <div class="label-rating">154 orders </div>
-//                 </div> <!-- rating-wrap.// -->
 // 		</figcaption>
 //             <div class="bottom-wrap">
 //                 <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>

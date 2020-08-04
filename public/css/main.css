@@ -403,17 +403,6 @@ footer {
   border-top: 1px solid #eee;
 }
 
-.label-rating {
-  margin-right: 10px;
-  color: #333;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.card-product .price-old {
-  color: #999;
-}
-
 .logo {
   height: 2em;
   width: 2em;
