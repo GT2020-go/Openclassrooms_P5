@@ -7,7 +7,7 @@ console.log(string)
 
 fetch(string)
     .then(data => data.json())
-    .then(product => console.log(product.colors))
+    .then(product => console.log(product.colors));
 
 
 {/* <div class="row pr-lg-5">
