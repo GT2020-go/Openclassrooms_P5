@@ -8,34 +8,67 @@ console.log(productApiUrl)
 fetch(productApiUrl)
     .then(data => data.json())
 
-    //product est un objet: pas besoin de passer par map >> on recupere direct les values avec product.key
-    .then(product => {
+    //teddy est un objet: pas besoin de passer par map >> on recupere direct les values avec teddy.key
+    .then(teddy => {
+
+        //test:
         const mainContainer = document.getElementById("myData")
-        mainContainer.innerHTML = 'voici les couleurs: ' + product.colors + ' </br>Et la description ici: ' + product.description;
+        mainContainer.innerHTML = 'voici les couleurs: ' + teddy.colors + ' </br>Et la description ici: ' + teddy.description;
+
+        // creation du select deroulant pour options de couleurs:
+        //Creation des Cartes produit
+        const columnContainer = document.createElement("div")
+        columnContainer.setAttribute("class", "col-md-8 justify-content-center")
+        mainContainer.appendChild(columnContainer)
+
+        const cardContainer = document.createElement("figure")
+        cardContainer.setAttribute("class", "card card-product")
+        columnContainer.appendChild(cardContainer)
+
+        //imageWrap - conteneur image
+        const imageWrap = document.createElement("div")
+
+        imageWrap.setAttribute("class", "img-wrap")
+        cardContainer.appendChild(imageWrap)
+
+        const imageContainer = document.createElement("img")
+        imageContainer.setAttribute("src", teddy.imageUrl)
+        imageWrap.appendChild(imageContainer)
+
+        //infoWrap - conteneur de text sous image
+        const infoWrap = document.createElement("figcaption")
+        infoWrap.setAttribute("class", "info-wrap")
+        cardContainer.appendChild(infoWrap)
+
+
+        const teddyName = document.createElement("h4")
+        teddyName.setAttribute("class", "title")
+        teddyName.innerHTML = teddy.name
+        infoWrap.appendChild(teddyName)
+
+        const teddyDescription = document.createElement("p")
+        teddyDescription.setAttribute("class", "desc")
+        teddyDescription.innerHTML = teddy.description
+        infoWrap.appendChild(teddyDescription)
+
+        //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
+        const bottomWrap = document.createElement("div")
+        bottomWrap.setAttribute("class", "bottom-wrap")
+        cardContainer.appendChild(bottomWrap)
+
+
+        const teddyUrl = new URL('/teddy.html?id=' + teddy._id, 'http://localhost:3000') //update teddy url with id
+
+
+        const orderButton = document.createElement("a")
+        orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
+        orderButton.setAttribute("href", teddyUrl) //replace # with link to teddy page here
+        orderButton.innerHTML = "Choose color"
+        bottomWrap.appendChild(orderButton)
+
+        const teddyPrice = document.createElement("h5")
+        teddyPrice.setAttribute("class", "price")
+        teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
+        bottomWrap.appendChild(teddyPrice)
+
     })
-
-
-
-{/* <div class="row pr-lg-5">
-                <div class="col-md-7 mb-4">
-
-                    <div class="view">
-                        <img src="https://mdbootstrap.com/img/illustrations/graphics(4).png" class="img-fluid"
-                            alt="smaple image">
-                    </div>
-
-                </div>
-                <div class="col-md-5 d-flex align-items-center">
-                    <div>
-
-                        <h3 class="font-weight-bold mb-4">Material Design Blocks</h3>
-
-                        <p>Lorem ipsum dolor sit amet consectetur adip elit. Maiores deleniti explicabo voluptatem
-                            quisquam nulla asperiores aspernatur aperiam voluptate et consectetur minima delectus,
-                            fugiat eum soluta blanditiis adipisci, velit dolore magnam.</p>
-
-                        <button type="button" class="btn btn-orange btn-rounded mx-0">Download</button>
-
-                    </div>
-                </div>
-            </div> */}
