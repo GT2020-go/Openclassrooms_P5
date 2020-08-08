@@ -2,12 +2,18 @@ const productId = new URL(window.location.href);
 teddyId = productId.searchParams.get("id");
 console.log(teddyId);
 
-const string = 'api/teddies/' + teddyId
-console.log(string)
+const productApiUrl = 'api/teddies/' + teddyId
+console.log(productApiUrl)
 
-fetch(string)
+fetch(productApiUrl)
     .then(data => data.json())
-    .then(product => console.log(product.colors));
+
+    //product est un objet: pas besoin de passer par map >> on recupere direct les values avec product.key
+    .then(product => {
+        const mainContainer = document.getElementById("myData")
+        mainContainer.innerHTML = 'voici les couleurs: ' + product.colors + ' </br>Et la description ici: ' + product.description;
+    })
+
 
 
 {/* <div class="row pr-lg-5">
