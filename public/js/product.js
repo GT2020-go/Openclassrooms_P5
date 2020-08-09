@@ -71,4 +71,7 @@ fetch(productApiUrl)
         teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
         bottomWrap.appendChild(teddyPrice)
 
+
+        //add options of the teddy inside select
+
     })
