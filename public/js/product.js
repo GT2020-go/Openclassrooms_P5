@@ -11,11 +11,8 @@ fetch(productApiUrl)
     //teddy est un objet: pas besoin de passer par map >> on recupere direct les values avec teddy.key
     .then(teddy => {
 
-        //test:
         const mainContainer = document.getElementById("myData")
-        mainContainer.innerHTML = 'voici les couleurs: ' + teddy.colors + ' </br>Et la description ici: ' + teddy.description;
 
-        // creation du select deroulant pour options de couleurs:
         //Creation des Cartes produit
         const columnContainer = document.createElement("div")
         columnContainer.setAttribute("class", "col-md-8 justify-content-center")
@@ -54,24 +51,34 @@ fetch(productApiUrl)
         //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
         const bottomWrap = document.createElement("div")
         bottomWrap.setAttribute("class", "bottom-wrap")
+        bottomWrap.innerHTML = '            <div class="row justify-content-center"><div class="d-flex flex-wrap"><div class="select-outline position-relative w-100"><select class="mdb-select md-form md-outline" id="mySelect"><option value="" disabled selected>Choose a color...</option><!--options go here from product.js--></select><label>Color</label></div></div></div>'
         cardContainer.appendChild(bottomWrap)
 
 
         const teddyUrl = new URL('/teddy.html?id=' + teddy._id, 'http://localhost:3000') //update teddy url with id
 
 
+
+
+
+        //add options of the teddy inside select
+        const selectContainer = document.getElementById("mySelect")
+
+        //creer fonction pour completer couleurs dans le select:
+        const colorOption = teddy.colors.map(color => {
+            const optionContainer = document.createElement("option")
+            optionContainer.innerHTML = color
+            mySelect.appendChild(optionContainer)
+        })
+
         const orderButton = document.createElement("a")
         orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
         orderButton.setAttribute("href", teddyUrl) //replace # with link to teddy page here
-        orderButton.innerHTML = "Choose color"
+        orderButton.innerHTML = "Add to Cart"
         bottomWrap.appendChild(orderButton)
 
         const teddyPrice = document.createElement("h5")
         teddyPrice.setAttribute("class", "price")
         teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
         bottomWrap.appendChild(teddyPrice)
-
-
-        //add options of the teddy inside select
-
     })
