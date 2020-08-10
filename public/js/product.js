@@ -51,7 +51,7 @@ fetch(productApiUrl)
         //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
         const bottomWrap = document.createElement("div")
         bottomWrap.setAttribute("class", "bottom-wrap")
-        bottomWrap.innerHTML = '            <div class="row justify-content-center"><div class="d-flex flex-wrap"><div class="select-outline position-relative w-100"><select class="mdb-select md-form md-outline" id="mySelect"><option value="" disabled selected>Choose a color...</option><!--options go here from product.js--></select><label>Color</label></div></div></div>'
+        bottomWrap.innerHTML = '<div class="row justify-content-center"><div class="d-flex flex-wrap"><div class="select-outline position-relative w-100"><select class="mdb-select md-form md-outline" id="mySelect" form="addToCartForm"><option value="" disabled selected>Choose a color...</option><!--options go here from product.js--></select><label>Color</label></div></div></div>'
         cardContainer.appendChild(bottomWrap)
 
 
