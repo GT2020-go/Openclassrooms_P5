@@ -27,16 +27,10 @@ fetch('api/teddies')
         infoWrap.setAttribute("class", "info-wrap")
         cardContainer.appendChild(infoWrap)
 
-
         const teddyName = document.createElement("h4")
         teddyName.setAttribute("class", "title")
         teddyName.innerHTML = teddy.name
         infoWrap.appendChild(teddyName)
-
-        // const teddyDescription = document.createElement("p")
-        // teddyDescription.setAttribute("class", "desc")
-        // teddyDescription.innerHTML = teddy.description
-        // infoWrap.appendChild(teddyDescription)
 
         //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
         const bottomWrap = document.createElement("div")
