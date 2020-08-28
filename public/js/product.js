@@ -13,6 +13,9 @@ fetch(productApiUrl)
 
         const mainContainer = document.getElementById("myData")
 
+        //Create a FORM !!!!
+
+
         //Creation des Cartes produit
         const columnContainer = document.createElement("div")
         columnContainer.setAttribute("class", "col-md-8 justify-content-center")
