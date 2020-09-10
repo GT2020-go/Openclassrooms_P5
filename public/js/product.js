@@ -23,6 +23,8 @@ fetch(productApiUrl)
 
         insertName(teddy)
 
+        insertDescription(teddy)
+
         // const teddyDescription = document.createElement("p")
         // teddyDescription.setAttribute("class", "desc")
         // teddyDescription.innerHTML = teddy.description
@@ -77,4 +79,11 @@ const insertColorList = (product) => {
 const insertName = (product) => {
     const teddyName = document.getElementById("teddyName")
     teddyName.append(product.name)
+}
+
+//fonction inserer description:
+
+const insertDescription = (product) => {
+    const teddyDescription = document.getElementById("teddyDescription")
+    teddyDescription.append(product.description)
 }
