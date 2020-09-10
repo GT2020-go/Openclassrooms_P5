@@ -21,14 +21,7 @@ fetch(productApiUrl)
 
         insertColorList(teddy)
 
-        // const imageContainer = document.createElement("img")
-        // imageContainer.setAttribute("src", teddy.imageUrl)
-        // imageWrap.appendChild(imageContainer)
-
-        // const teddyName = document.createElement("h4")
-        // teddyName.setAttribute("class", "title")
-        // teddyName.innerHTML = teddy.name
-        // infoWrap.appendChild(teddyName)
+        insertName(teddy)
 
         // const teddyDescription = document.createElement("p")
         // teddyDescription.setAttribute("class", "desc")
@@ -62,7 +55,6 @@ fetch(productApiUrl)
 
 //fonction inserer image:
 
-
 const insertImage = (imgClass, imgSource) => {
     const imageContainer = document.createElement("img")
     imageContainer.setAttribute("class", imgClass)
@@ -70,6 +62,7 @@ const insertImage = (imgClass, imgSource) => {
     document.getElementById("img-wrap").appendChild(imageContainer)
 }
 
+//fonction inserer liste couleurs:
 
 const insertColorList = (product) => {
     product.colors.map(color => {
@@ -77,4 +70,11 @@ const insertColorList = (product) => {
         optionContainer.innerHTML = color
         document.getElementById("mySelect").appendChild(optionContainer)
     })
+}
+
+//fonction inserer nom:
+
+const insertName = (product) => {
+    const teddyName = document.getElementById("teddyName")
+    teddyName.append(product.name)
 }
