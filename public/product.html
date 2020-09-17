@@ -47,7 +47,7 @@
     <main>
         <h1 class="hello">Hello World of teddies</h1>
         <section>
-            <form action="" method="get">
+            <form action="" method="POST">
                 <div class="row justify-content-center">
                     <div class="col-md-8 justify-content-center" id="myData">
                         <figure class="card card-product">
@@ -65,38 +65,31 @@
                             <div class="bottom-wrap">
                                 <div class="row justify-content-center">
                                     <div class="d-flex flex-wrap">
-                                        <div class="select-outline position-relative w-100">
-                                            <select class="mdb-select md-form md-outline" id="mySelect"
-                                                form="addToCartForm">
-                                                <option value="" disabled="" selected="">Choose a color...</option>
-                                                <!--options fill from product.js-->
-                                            </select><label>Color</label>
-                                        </div>
+                                        <label form="addToCartForm">Select color</label>
+                                        <select class="form-control" id="mySelect" form="addToCartForm">
+                                            <option value="" disabled="" selected="">Choose a color...</option>
+                                            <!--options fill from product.js-->
+                                        </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <label form="exampleFormControlSelect1">Select quantity</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <label form="addToCartForm">Select quantity</label>
+                                        <select class="form-control" id="myQuantity">
+                                            <option value="1" selected="">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                     </div>
                                 </div>
-                                <a class="btn btn-sm btn-primary float-right"
-                                    href="http://localhost:3000/teddy.html?id=5be9c8541c9d440000665243">Add to Cart</a>
+                                <p class="btn btn-sm btn-primary float-right" id="addToCartBtn">Add to Cart</p>
                                 <h5 class="price">
                                     <!--fill from product.js-->
                                 </h5>
                             </div>
                         </figure>
                     </div>
-
-
-
-
-
 
                 </div>
 

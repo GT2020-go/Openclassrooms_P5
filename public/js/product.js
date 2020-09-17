@@ -53,6 +53,9 @@ fetch(productApiUrl)
         // teddyPrice.setAttribute("class", "price")
         // teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
         // bottomWrap.appendChild(teddyPrice)
+        const x = document.getElementById("addToCartBtn");
+        x.addEventListener("click", addToCartFunction);
+
     })
 
 //fonction inserer image:
@@ -86,4 +89,10 @@ const insertName = (product) => {
 const insertDescription = (product) => {
     const teddyDescription = document.getElementById("teddyDescription")
     teddyDescription.append(product.description)
+}
+
+//add products to cart function:
+
+const addToCartFunction = () => {
+    alert('Items added to cart')
 }
