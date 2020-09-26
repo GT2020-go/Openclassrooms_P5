@@ -92,10 +92,7 @@ const insertDescription = (product) => {
 }
 
 //add products to cart function:
-
 const addToCartFunction = () => {
     alert('Items added to cart');
-    localStorage.setItem("_id", teddyId);
-    localStorage.setItem("color", myColor.value);
-    localStorage.setItem("quantity", myQuantity.value)
+    localStorage.setItem('cart', JSON.stringify({ "_id": teddyId, "color": myColor.value, "quantity": +myQuantity.value }));
 }

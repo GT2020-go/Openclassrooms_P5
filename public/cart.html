@@ -47,53 +47,18 @@
     <main>
         <h1 class="hello">Hello World of teddies</h1>
         <section>
-            <form action="" method="POST">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 justify-content-center" id="myData">
-                        <figure class="card card-product">
-                            <div class="img-wrap" id="img-wrap">
-                                <!--fill from product.js-->
-                            </div>
-                            <figcaption id="info-wrap">
-                                <h4 class="title" id="teddyName">
-                                    <!--fill from product.js-->
-                                </h4>
-                                <p class="desc" id="teddyDescription">
-                                    <!--fill from product.js-->
-                                </p>
-                            </figcaption>
-                            <div class="bottom-wrap">
-                                <div class="row justify-content-center">
-                                    <div class="d-flex flex-wrap">
-                                        <label form="addToCartForm">Select color</label>
-                                        <select class="form-control" id="mySelect" form="addToCartForm">
-                                            <option value="" disabled="" selected="">Choose a color...</option>
-                                            <!--options fill from product.js-->
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label form="addToCartForm">Select quantity</label>
-                                        <select class="form-control" id="myQuantity">
-                                            <option value="1" selected="">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <p class="btn btn-sm btn-primary float-right" id="addToCartBtn">Add to Cart</p>
-                                <h5 class="price">
-                                    <!--fill from product.js-->
-                                </h5>
-                            </div>
-                        </figure>
-                    </div>
-
+            <div class="row" id="myData">
+                <div class="container-sm title">
+                    <h2>Shopping Cart</h2>
                 </div>
 
-            </form>
+                <div class="cart"></div>
+
+
+            </div>
+
+            </div>
+
         </section>
     </main>
     <!-- Footer -->
@@ -226,7 +191,10 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 
+<!--fontawesomne-->
+<script src="https://use.fontawesome.com/c560c025cf.js">async</script>
+
 <!--my scripts bellow-->
-<script src="js/product.js">async</script>
+<script src="js/cart.js">async</script>
 
 </html>
