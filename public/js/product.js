@@ -66,11 +66,12 @@ const insertDescription = (product) => {
 //add products to cart function:
 const addToCartFunction = () => {
     alert('Items added to cart');
-
     const cart = 'cart';
     const cartItem = [{ "_id": teddyId, "color": myColor.value, "quantity": +myQuantity.value }];
     const cartValue = JSON.stringify(cartItem);
     localStorage.setItem(cart, cartValue);
+
+    console.log(JSON.parse(localStorage.getItem(cart)))
 }
 
 
