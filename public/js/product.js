@@ -25,34 +25,6 @@ fetch(productApiUrl)
 
         insertDescription(teddy)
 
-        // const teddyDescription = document.createElement("p")
-        // teddyDescription.setAttribute("class", "desc")
-        // teddyDescription.innerHTML = teddy.description
-        // infoWrap.appendChild(teddyDescription)
-
-        // //ensuite on ajoute un wrap pour le prix et le bouton Order(lien)
-        // const bottomWrap = document.createElement("div")
-        // bottomWrap.setAttribute("class", "bottom-wrap")
-        // bottomWrap.innerHTML = '<div class="row justify-content-center"><div class="d-flex flex-wrap"><div class="select-outline position-relative w-100"><select class="mdb-select md-form md-outline" id="myColor" form="addToCartForm"><option value="" disabled selected>Choose a color...</option><!--options go here from product.js--></select><label>Color</label></div></div></div>'
-        // cardContainer.appendChild(bottomWrap)
-
-
-        // const teddyUrl = new URL('/teddy.html?id=' + teddy._id, 'http://localhost:3000') //update teddy url with id
-
-
-
-
-
-        // const orderButton = document.createElement("a")
-        // orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")
-        // orderButton.setAttribute("href", teddyUrl) //replace # with link to teddy page here
-        // orderButton.innerHTML = "Add to Cart"
-        // bottomWrap.appendChild(orderButton)
-
-        // const teddyPrice = document.createElement("h5")
-        // teddyPrice.setAttribute("class", "price")
-        // teddyPrice.innerHTML = teddy.price / 100 + '.00 EUR'
-        // bottomWrap.appendChild(teddyPrice)
         const x = document.getElementById("addToCartBtn");
         x.addEventListener("click", addToCartFunction);
 
@@ -94,5 +66,11 @@ const insertDescription = (product) => {
 //add products to cart function:
 const addToCartFunction = () => {
     alert('Items added to cart');
-    localStorage.setItem('cart', JSON.stringify({ "_id": teddyId, "color": myColor.value, "quantity": +myQuantity.value }));
+
+    const cart = 'cart';
+    const cartItem = [{ "_id": teddyId, "color": myColor.value, "quantity": +myQuantity.value }];
+    const cartValue = JSON.stringify(cartItem);
+    localStorage.setItem(cart, cartValue);
 }
+
+
