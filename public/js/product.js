@@ -26,9 +26,9 @@ fetch(productApiUrl)
         insertDescription(teddy)
 
         const x = document.getElementById("addToCartBtn");
-        x.addEventListener("click", addToCartFunction);
-
+        x.addEventListener("click", addToCartFunction(teddyId, myColor.value, myQuantity.select));
     })
+
 
 //fonction inserer image:
 
@@ -63,15 +63,17 @@ const insertDescription = (product) => {
     teddyDescription.append(product.description)
 }
 
+
+
 //add products to cart function:
-const addToCartFunction = () => {
-    alert('Items added to cart');
-    const cart = 'cart';
-    const cartItem = [{ "_id": teddyId, "color": myColor.value, "quantity": +myQuantity.value }];
-    const cartValue = JSON.stringify(cartItem);
-    localStorage.setItem(cart, cartValue);
+const addToCartFunction = (id, color, qty) => {
+    let cartItem = JSON.parse(localStorage.getItem('cart'));
+    if (!cartItem) {
+        cartItem = []
+    }
 
-    console.log(JSON.parse(localStorage.getItem(cart)))
+    cartItem.push({ "_id": id, "color": color, "quantity": qty })
+
+    localStorage.setItem('cart', JSON.stringify(cartItem))
+
 }
-
-
