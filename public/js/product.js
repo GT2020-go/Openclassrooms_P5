@@ -26,7 +26,8 @@ fetch(productApiUrl)
         insertDescription(teddy)
 
         const x = document.getElementById("addToCartBtn");
-        x.addEventListener("click", addToCartFunction(teddyId, myColor.value, myQuantity.select));
+
+        x.addEventListener("click", addToCartFunction);
     })
 
 
@@ -71,6 +72,10 @@ const addToCartFunction = (id, color, qty) => {
     if (!cartItem) {
         cartItem = []
     }
+
+    id = teddyId;
+    color = document.getElementById("myColor").value;
+    qty = document.getElementById("myQuantity").value;
 
     cartItem.push({ "_id": id, "color": color, "quantity": qty })
 
