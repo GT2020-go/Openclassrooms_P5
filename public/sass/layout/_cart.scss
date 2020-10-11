@@ -1,0 +1,13 @@
+.img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 100px;
+    text-align: center;
+}
+
+.img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
