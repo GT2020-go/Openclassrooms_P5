@@ -412,6 +412,14 @@ template {
   object-fit: cover;
 }
 
+.productDescription {
+  font-size: 80%;
+}
+
+.productName {
+  font-size: 80%;
+}
+
 .logo {
   height: 2em;
   width: 2em;
