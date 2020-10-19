@@ -391,6 +391,7 @@ template {
 .card-product .bottom-wrap {
   padding: 15px;
   border-top: 1px solid #eee;
+  box-shadow: 0px 2px 5px 3px rgba(59, 47, 92, 0.25);
 }
 
 .card-product {
@@ -399,6 +400,7 @@ template {
 }
 
 .img-wrap {
+  margin-right: 1em;
   border-radius: 3px 3px 0 0;
   overflow: hidden;
   position: relative;
@@ -414,10 +416,28 @@ template {
 
 .productDescription {
   font-size: 80%;
+  margin: 0;
 }
 
 .productName {
   font-size: 80%;
+  margin: 0;
+}
+
+.rowProduct {
+  margin: 1em;
+  padding: 1em;
+  border-bottom: 1px solid #7786ad;
+}
+
+.rowProduct .container {
+  padding: 0;
+  margin-top: 1em;
+}
+
+.col-xs {
+  margin: 1em;
+  padding: 1em;
 }
 
 .logo {
