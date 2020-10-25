@@ -11,12 +11,6 @@ fetch(productApiUrl)
     //teddy est un objet: pas besoin de passer par map >> on recupere direct les values avec teddy.key
     .then(teddy => {
 
-        //Form created directly in HTML
-
-
-        //imageWrap - conteneur image
-        // const imageWrap = document.getElementById("img-wrap")
-
         insertImage("img", teddy.imageUrl)
 
         insertColorList(teddy)
@@ -75,9 +69,19 @@ const addToCartFunction = (id, color, qty) => {
 
     id = teddyId;
     color = document.getElementById("myColor").value;
-    qty = document.getElementById("myQuantity").value;
+    qty = +(document.getElementById("myQuantity").value);
 
-    cartItem.push({ "_id": id, "color": color, "quantity": qty })
+
+    if (cartItem.some(cart => cart._id === id && cart.color === color)) {
+        console.log('test')
+        cartItem.map(cart => {
+            if (cart._id === id && cart.color === color) {
+                cart.quantity += qty
+            }
+        })
+    } else {
+        cartItem.push({ "_id": id, "color": color, 'quantity': +qty })
+    }
 
     localStorage.setItem('cart', JSON.stringify(cartItem))
 

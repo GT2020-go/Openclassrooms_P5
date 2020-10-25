@@ -10,7 +10,7 @@ const buildMyCart = () => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
         console.log(c)
-        insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.quantity, teddy.price)
+        insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
     })
 }
 
@@ -21,7 +21,7 @@ buildMyCart()
 
 //fonction inserer image:
 
-const insertTeddy = (imgSource, name, description, quantity, price) => {
+const insertTeddy = (imgSource, name, description, color, quantity, price) => {
 
     const rowProduct = document.createElement("div")
     rowProduct.setAttribute("class", 'row rowProduct')
@@ -59,6 +59,17 @@ const insertTeddy = (imgSource, name, description, quantity, price) => {
     row2.appendChild(insertDescription)
     columnSm.appendChild(row2)
     rowProduct.appendChild(columnSm)
+
+    // incl. color:
+    const columnXsColor = document.createElement("div")
+    columnXsColor.setAttribute("class", 'col-xs')
+
+    const itemColor = document.createElement("p")
+    itemColor.innerHTML = 'Color: ' + color
+
+    columnXsColor.appendChild(itemColor)
+    rowProduct.appendChild(columnXsColor)
+
 
     // incl. qty:
     const columnXsQuantity = document.createElement("div")
