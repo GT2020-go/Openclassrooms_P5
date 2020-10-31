@@ -125,7 +125,23 @@ const cartTotalCost = () => {
     const arrayOfCosts = JSON.parse(localStorage.getItem('eachCost'))
     console.log(arrayOfCosts)
     console.log(typeof (arrayOfCosts))
-    console.log(arrSum(arrayOfCosts))
+
+    const totalCost = arrSum(arrayOfCosts)
+
+    // incl. total price:
+
+    const total = document.createElement('div')
+    total.setAttribute("class", 'row row-total-price')
+
+    const columnXsTotalPrice = document.createElement("div")
+    columnXsTotalPrice.setAttribute("class", 'col-xs')
+
+    const itemTotalPrice = document.createElement("p")
+    itemTotalPrice.innerHTML = 'Your total is: ' + totalCost + '.00 EUR'
+
+    columnXsTotalPrice.appendChild(itemTotalPrice)
+    total.appendChild(columnXsTotalPrice)
+    document.getElementById("productList").appendChild(total)
 }
 
 cartTotalCost()
