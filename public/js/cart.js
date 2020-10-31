@@ -4,20 +4,27 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
+const arrSum = arr => arr.reduce((a, b) => a + b, 0)
+
 const buildMyCart = () => {
+    const eachTotalCost = []
     const cart = JSON.parse(localStorage.getItem('cart'))
     cart.map(async c => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
         console.log(c)
         insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
+        const cost = (p, q) => {
+            eachTotalCost.push(p / 100 * q)
+            console.log(eachTotalCost)
+            localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
+        }
+        cost(c.quantity, teddy.price)
+
     })
 }
 
 buildMyCart()
-
-
-
 
 //fonction inserer image:
 
@@ -76,7 +83,7 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
     columnXsQuantity.setAttribute("class", 'col-xs')
 
     const itemQuantity = document.createElement("p")
-    itemQuantity.innerHTML = 'Quantity: ' + quantity + ' item '
+    itemQuantity.innerHTML = 'Quantity: ' + quantity + ' unit. '
 
     columnXsQuantity.appendChild(itemQuantity)
     rowProduct.appendChild(columnXsQuantity)
@@ -86,11 +93,10 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
     columnXsPrice.setAttribute("class", 'col-xs')
 
     const itemPrice = document.createElement("p")
-    itemPrice.innerHTML = price / 100 + '.00 EUR'
+    itemPrice.innerHTML = quantity * price / 100 + '.00 EUR'
 
     columnXsPrice.appendChild(itemPrice)
     rowProduct.appendChild(columnXsPrice)
-
 
 
 
@@ -112,3 +118,14 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
     rowProduct.appendChild(rowButtons)
 
 }
+
+//function total cost:
+
+const cartTotalCost = () => {
+    const arrayOfCosts = JSON.parse(localStorage.getItem('eachCost'))
+    console.log(arrayOfCosts)
+    console.log(typeof (arrayOfCosts))
+    console.log(arrSum(arrayOfCosts))
+}
+
+cartTotalCost()
