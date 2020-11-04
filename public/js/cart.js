@@ -14,13 +14,8 @@ const buildMyCart = () => {
         console.log(teddy)
         console.log(c)
         insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
-        const cost = (p, q) => {
-            eachTotalCost.push(p / 100 * q)
-            console.log(eachTotalCost)
-            localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
-        }
-        cost(c.quantity, teddy.price)
-
+        eachTotalCost.push(teddy.price / 100 * c.quantity)
+        localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
     })
 }
 
@@ -141,7 +136,8 @@ const cartTotalCost = () => {
 
     columnXsTotalPrice.appendChild(itemTotalPrice)
     total.appendChild(columnXsTotalPrice)
-    document.getElementById("productList").appendChild(total)
+    const product = document.getElementById("productList");
+    product.parentNode.appendChild(total)
 }
 
 cartTotalCost()
