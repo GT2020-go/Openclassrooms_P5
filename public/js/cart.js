@@ -6,27 +6,6 @@ const getTeddiesById = async (id) => {
 
 const arrSum = arr => arr.reduce((a, b) => a + b, 0)
 
-const buildMyCart = () => {
-    const eachTotalCost = []
-    const cart = JSON.parse(localStorage.getItem('cart'))
-    if (cart) {
-        document.getElementById("empty-cart-message").style.visibility = "hidden";
-        document.getElementById("checkout-form").style.height = "0";
-        document.getElementById("checkout-form").style.visibility = "visible";
-        document.getElementById("checkout-form").style.height = "auto";
-    }
-    cart.map(async c => {
-        const teddy = await getTeddiesById(c._id)
-        console.log(teddy)
-        console.log(c)
-        insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
-        eachTotalCost.push(teddy.price / 100 * c.quantity)
-        localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
-    })
-}
-
-buildMyCart()
-
 //fonction inserer image:
 
 const insertTeddy = (imgSource, name, description, color, quantity, price) => {
@@ -128,7 +107,6 @@ const cartTotalCost = () => {
     console.log(typeof (arrayOfCosts))
 
     const totalCost = arrSum(arrayOfCosts)
-
     // incl. total price:
 
     const total = document.createElement('div')
@@ -146,4 +124,31 @@ const cartTotalCost = () => {
     product.parentNode.appendChild(total)
 }
 
-cartTotalCost()
+
+const buildMyCart = () => {
+    const eachTotalCost = []
+    const cart = JSON.parse(localStorage.getItem('cart'))
+    if (cart) {
+        document.getElementById("empty-cart-message").style.visibility = "hidden";
+        document.getElementById("checkout-form").style.height = "0";
+        document.getElementById("checkout-form").style.visibility = "visible";
+        document.getElementById("checkout-form").style.height = "auto";
+    }
+    cart.map(async c => {
+        const teddy = await getTeddiesById(c._id)
+        console.log(teddy)
+        console.log(c)
+        insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
+        eachTotalCost.push(teddy.price / 100 * c.quantity)
+        console.log('bonjour')
+        localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
+        //calculate total
+    })
+    cartTotalCost()
+}
+
+
+buildMyCart()
+
+
+
