@@ -129,10 +129,8 @@ const buildMyCart = () => {
     const eachTotalCost = []
     const cart = JSON.parse(localStorage.getItem('cart'))
     if (cart) {
-        document.getElementById("empty-cart-message").style.visibility = "hidden";
-        document.getElementById("checkout-form").style.height = "0";
-        document.getElementById("checkout-form").style.visibility = "visible";
-        document.getElementById("checkout-form").style.height = "auto";
+        document.getElementById("empty-cart-message").style.display = "none";
+        document.getElementById("checkout-form").style.display = "block";
     }
     cart.map(async c => {
         const teddy = await getTeddiesById(c._id)
@@ -149,6 +147,4 @@ const buildMyCart = () => {
 
 
 buildMyCart()
-
-
 

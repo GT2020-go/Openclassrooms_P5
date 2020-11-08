@@ -441,12 +441,11 @@ template {
 }
 
 #empty-cart-message {
-  visibility: visible;
+  display: block;
 }
 
 #checkout-form {
-  visibility: hidden;
-  height: 0;
+  display: none;
 }
 
 .logo {
