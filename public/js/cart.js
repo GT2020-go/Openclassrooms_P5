@@ -9,6 +9,12 @@ const arrSum = arr => arr.reduce((a, b) => a + b, 0)
 const buildMyCart = () => {
     const eachTotalCost = []
     const cart = JSON.parse(localStorage.getItem('cart'))
+    if (cart) {
+        document.getElementById("empty-cart-message").style.visibility = "hidden";
+        document.getElementById("checkout-form").style.height = "0";
+        document.getElementById("checkout-form").style.visibility = "visible";
+        document.getElementById("checkout-form").style.height = "auto";
+    }
     cart.map(async c => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
