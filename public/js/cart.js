@@ -4,11 +4,11 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
-const arrSum = arr => arr.reduce((a, b) => a + b, 0)
+//const arrSum = arr => arr.reduce((a, b) => a + b, 0)
 
 //fonction inserer image:
 
-const insertTeddy = (imgSource, name, description, color, quantity, price) => {
+const insertTeddy = (imgSource, name, color, quantity, price) => {
 
     const rowProduct = document.createElement("div")
     rowProduct.setAttribute("class", 'row rowProduct')
@@ -29,7 +29,7 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
     document.getElementById("productList").appendChild(rowProduct)
 
 
-    // insert name + description
+    // insert name
     const columnSm = document.createElement("div")
     columnSm.setAttribute("class", 'col-sm')
 
@@ -39,11 +39,7 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
     const insertName = document.createElement("h3")
     insertName.innerHTML = name
 
-    const insertDescription = document.createElement("p")
-    insertDescription.innerHTML = description
-
     row2.appendChild(insertName)
-    row2.appendChild(insertDescription)
     columnSm.appendChild(row2)
     rowProduct.appendChild(columnSm)
 
@@ -101,32 +97,32 @@ const insertTeddy = (imgSource, name, description, color, quantity, price) => {
 
 //function total cost:
 
-const cartTotalCost = () => {
-    const arrayOfCosts = JSON.parse(localStorage.getItem('eachCost'))
-    console.log(arrayOfCosts)
-    console.log(typeof (arrayOfCosts))
+// const cartTotalCost = () => {
+//     const arrayOfCosts = JSON.parse(localStorage.getItem('eachCost'))
+//     console.log(arrayOfCosts)
+//     console.log(typeof (arrayOfCosts))
 
-    const totalCost = arrSum(arrayOfCosts)
-    // incl. total price:
+//     const totalCost = arrSum(arrayOfCosts)
+//     // incl. total price:
 
-    const total = document.createElement('div')
-    total.setAttribute("class", 'row row-total-price')
+//     const total = document.createElement('div')
+//     total.setAttribute("class", 'row row-total-price')
 
-    const columnXsTotalPrice = document.createElement("div")
-    columnXsTotalPrice.setAttribute("class", 'col-xs')
+//     const columnXsTotalPrice = document.createElement("div")
+//     columnXsTotalPrice.setAttribute("class", 'col-xs')
 
-    const itemTotalPrice = document.createElement("p")
-    itemTotalPrice.innerHTML = 'Your total is: ' + totalCost + '.00 EUR'
+//     const itemTotalPrice = document.createElement("p")
+//     itemTotalPrice.innerHTML = 'Your total is: ' + totalCost + '.00 EUR'
 
-    columnXsTotalPrice.appendChild(itemTotalPrice)
-    total.appendChild(columnXsTotalPrice)
-    const product = document.getElementById("productList");
-    product.parentNode.appendChild(total)
-}
+//     columnXsTotalPrice.appendChild(itemTotalPrice)
+//     total.appendChild(columnXsTotalPrice)
+//     const product = document.getElementById("productList");
+//     product.parentNode.appendChild(total)
+// }
 
 
 const buildMyCart = () => {
-    const eachTotalCost = []
+    //const eachTotalCost = []
     const cart = JSON.parse(localStorage.getItem('cart'))
     if (cart) {
         document.getElementById("empty-cart-message").style.display = "none";
@@ -136,15 +132,24 @@ const buildMyCart = () => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
         console.log(c)
-        insertTeddy(teddy.imageUrl, teddy.name, teddy.description, c.color, c.quantity, teddy.price)
-        eachTotalCost.push(teddy.price / 100 * c.quantity)
+        insertTeddy(teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
+        //eachTotalCost.push(teddy.price / 100 * c.quantity)
+        total(teddy.price / 100 * c.quantity)
+
         console.log('bonjour')
-        localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
+        //localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
         //calculate total
     })
-    cartTotalCost()
+
 }
 
 
 buildMyCart()
 
+// cartTotalCost()
+
+const total = (price) => {
+    const start = +document.getElementById("total").innerHTML
+    document.getElementById("total").innerHTML = start + +price + '.00 '
+    console.log(start)
+}

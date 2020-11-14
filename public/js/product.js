@@ -19,6 +19,8 @@ fetch(productApiUrl)
 
         insertDescription(teddy)
 
+        insertPrice(teddy)
+
         const x = document.getElementById("addToCartBtn");
 
         x.addEventListener("click", addToCartFunction);
@@ -58,7 +60,12 @@ const insertDescription = (product) => {
     teddyDescription.append(product.description)
 }
 
+//fonction inserer prix:
 
+const insertPrice = (product) => {
+    const teddyPrice = document.getElementById("teddyPrice")
+    teddyPrice.append(product.price / 100 + ' .00 EUR')
+}
 
 //add products to cart function:
 const addToCartFunction = (id, color, qty) => {
