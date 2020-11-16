@@ -40,6 +40,8 @@
 .col-xs {
     margin: 1em;
     padding: 1em;
+    display: flex;
+    align-items: center;
 }
 
 #empty-cart-message {
@@ -48,4 +50,8 @@
 
 #checkout-form {
     display: none;
+}
+
+#submit-button {
+    margin: 1em 0 0 0
 }

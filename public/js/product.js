@@ -64,7 +64,7 @@ const insertDescription = (product) => {
 
 const insertPrice = (product) => {
     const teddyPrice = document.getElementById("teddyPrice")
-    teddyPrice.append(product.price / 100 + ' .00 EUR')
+    teddyPrice.append(product.price / 100 + '.00 EUR')
 }
 
 //add products to cart function:

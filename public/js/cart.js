@@ -13,6 +13,19 @@ const insertTeddy = (imgSource, name, color, quantity, price) => {
     const rowProduct = document.createElement("div")
     rowProduct.setAttribute("class", 'row rowProduct')
 
+    // insert name
+
+    const columnSm = document.createElement("div")
+    columnSm.setAttribute("class", 'col')
+
+    const insertName = document.createElement("h3")
+    insertName.innerHTML = name
+
+    columnSm.appendChild(insertName)
+    rowProduct.appendChild(columnSm)
+
+    //insert picture
+
     const columnXs = document.createElement("div")
     columnXs.setAttribute("class", 'col-xs')
 
@@ -27,21 +40,6 @@ const insertTeddy = (imgSource, name, color, quantity, price) => {
     columnXs.appendChild(imageWrapper)
     rowProduct.appendChild(columnXs)
     document.getElementById("productList").appendChild(rowProduct)
-
-
-    // insert name
-    const columnSm = document.createElement("div")
-    columnSm.setAttribute("class", 'col-sm')
-
-    const row2 = document.createElement("div")
-    row2.setAttribute("class", 'row')
-
-    const insertName = document.createElement("h3")
-    insertName.innerHTML = name
-
-    row2.appendChild(insertName)
-    columnSm.appendChild(row2)
-    rowProduct.appendChild(columnSm)
 
     // incl. color:
     const columnXsColor = document.createElement("div")
@@ -133,12 +131,8 @@ const buildMyCart = () => {
         console.log(teddy)
         console.log(c)
         insertTeddy(teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
-        //eachTotalCost.push(teddy.price / 100 * c.quantity)
         total(teddy.price / 100 * c.quantity)
-
         console.log('bonjour')
-        //localStorage.setItem('eachCost', JSON.stringify(eachTotalCost))
-        //calculate total
     })
 
 }
