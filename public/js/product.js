@@ -91,5 +91,4 @@ const addToCartFunction = (id, color, qty) => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cartItem))
-
 }

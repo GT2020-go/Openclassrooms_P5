@@ -60,86 +60,59 @@
                         <p>Your total is: <span id="total">0.00</span> EUR</p>
                     </div>
 
-                    <div class="container" id="checkout-form">
-                        <form class="needs-validation" novalidate>
-                            <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom01">First name</label>
-                                        <input type="text" class="form-control" id="validationCustom01"
-                                            placeholder="First name" required>
+                    <div class="container container-fluid" id="checkout-form">
+                        <form class="col-md-6 col-sm-12 col-lg-6 needs-validation" action="" onsubmit="validate()">
 
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom02">Last name</label>
-                                        <input type="text" class="form-control" id="validationCustom02"
-                                            placeholder="Last name" required>
-
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom02">Email</label>
-                                        <input type="text" class="form-control" id="validationCustom02"
-                                            placeholder="Email" required>
-
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="first-name">First name</label>
+                                    <input type="text" class="form-control" id="first-name" placeholder="First name"
+                                        required>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom03">Street Nr.</label>
-                                        <input type="text" class="form-control" id="validationCustom03"
-                                            placeholder="Street Nr." required>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid city.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom03">City</label>
-                                        <input type="text" class="form-control" id="validationCustom04"
-                                            placeholder="City" required>
-
-                                        <div class="invalid-feedback">
-                                            Please provide a valid city.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="md-form md-outline">
-                                        <label for="validationCustom05">Zip</label>
-                                        <input type="text" class="form-control" id="validationCustom05"
-                                            placeholder="Zip" required>
-
-                                        <div class="invalid-feedback">
-                                            Please provide a valid zip.
-                                        </div>
-                                    </div>
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="last-name">Last name</label>
+                                    <input type="text" class="form-control" id="last-name" placeholder="Last name"
+                                        required>
                                 </div>
                             </div>
-                            <div class="btn-wrapper justify-content-right">
-                                <button class="btn btn-primary btn-sm " id="submit-button"
-                                    type="submit">Checkout</button>
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                </div>
                             </div>
-                        </form>
+
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="street">Street Nr.</label>
+                                    <input type="text" class="form-control" id="street" placeholder="Street Nr."
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="post-code">Post Code</label>
+                                    <input type="text" class="form-control" id="post-code" placeholder="Post Code"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="md-form md-outline">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                                </div>
+
+                            </div>
+
                     </div>
+                    <div class="btn-wrapper justify-content-right">
+                        <button class="btn btn-primary btn-sm " id="submit-button" type="submit">Checkout</button>
+                    </div>
+                    </form>
                 </div>
+            </div>
 
             </div>
             </div>
@@ -151,7 +124,7 @@
 
 
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="nounours.com"> Nounours.com</a>
+            <a href="nounours.com">Nounours.com</a>
         </div>
 
 

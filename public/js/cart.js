@@ -4,11 +4,9 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
-//const arrSum = arr => arr.reduce((a, b) => a + b, 0)
-
 //fonction inserer image:
 
-const insertTeddy = (imgSource, name, color, quantity, price) => {
+const insertTeddy = (id, imgSource, name, color, quantity, price) => {
 
     const rowProduct = document.createElement("div")
     rowProduct.setAttribute("class", 'row rowProduct')
@@ -74,18 +72,18 @@ const insertTeddy = (imgSource, name, color, quantity, price) => {
 
 
 
-    //buttons to add/remove products:
+    //buttons to remove products:
 
     const rowButtons = document.createElement("div")
     rowButtons.setAttribute("class", 'container productContols')
 
     const buttonsContainer = document.createElement("div")
     buttonsContainer.setAttribute("class", 'btn-group')
-
     const removeButton = document.createElement("a")
     removeButton.setAttribute("class", "btn btn-light")
-    removeButton.innerHTML = "Remove Article"
 
+    removeButton.innerHTML = "Remove Article"
+    //removeButton.addEventListener("click", deleteFromCartFunction())
 
     buttonsContainer.appendChild(removeButton)
     rowButtons.appendChild(buttonsContainer)
@@ -93,34 +91,9 @@ const insertTeddy = (imgSource, name, color, quantity, price) => {
 
 }
 
-//function total cost:
-
-// const cartTotalCost = () => {
-//     const arrayOfCosts = JSON.parse(localStorage.getItem('eachCost'))
-//     console.log(arrayOfCosts)
-//     console.log(typeof (arrayOfCosts))
-
-//     const totalCost = arrSum(arrayOfCosts)
-//     // incl. total price:
-
-//     const total = document.createElement('div')
-//     total.setAttribute("class", 'row row-total-price')
-
-//     const columnXsTotalPrice = document.createElement("div")
-//     columnXsTotalPrice.setAttribute("class", 'col-xs')
-
-//     const itemTotalPrice = document.createElement("p")
-//     itemTotalPrice.innerHTML = 'Your total is: ' + totalCost + '.00 EUR'
-
-//     columnXsTotalPrice.appendChild(itemTotalPrice)
-//     total.appendChild(columnXsTotalPrice)
-//     const product = document.getElementById("productList");
-//     product.parentNode.appendChild(total)
-// }
-
 
 const buildMyCart = () => {
-    //const eachTotalCost = []
+
     const cart = JSON.parse(localStorage.getItem('cart'))
     if (cart) {
         document.getElementById("empty-cart-message").style.display = "none";
@@ -130,9 +103,9 @@ const buildMyCart = () => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
         console.log(c)
-        insertTeddy(teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
+        insertTeddy(teddy._id, teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
         total(teddy.price / 100 * c.quantity)
-        console.log('bonjour')
+
     })
 
 }
@@ -140,10 +113,62 @@ const buildMyCart = () => {
 
 buildMyCart()
 
-// cartTotalCost()
 
 const total = (price) => {
     const start = +document.getElementById("total").innerHTML
     document.getElementById("total").innerHTML = start + +price + '.00 '
     console.log(start)
+}
+
+
+const deleteFromCartFunction = () => (
+    //localStorage.removeItem(removeItem)
+    console.log("blabla")
+)
+
+const validate = () => {
+    var firstName = document.getElementById('first-name').value
+    var nameRGEX = /^[a-zA-Z ]+$/
+    var firstNameResult = nameRGEX.test(firstName)
+    alert("first name: " + firstNameResult)
+
+    var lastName = document.getElementById('last-name').value
+    var nameRGEX = /^[a-zA-Z ]+$/
+    var lastNameResult = nameRGEX.test(lastName)
+    alert("last name: " + lastNameResult)
+
+    var email = document.getElementById('email').value
+    var emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    var emailResult = emailRGEX.test(email)
+    alert("email: " + emailResult)
+
+    var street = document.getElementById('street').value
+    var streetRGEX = /^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$/
+    var streetResult = streetRGEX.test(street)
+    alert("street: " + streetResult)
+
+
+    var postCode = document.getElementById('post-code').value
+    var postCodeRGEX = /^[0-9]+$/
+    var postCodeResult = postCodeRGEX.test(postCode)
+    alert("post code: " + postCodeResult)
+
+    var city = document.getElementById('city').value
+    var cityRGEX = /^[a-zA-Z ]+$/
+    var cityResult = cityRGEX.test(city)
+    alert("city: " + cityResult)
+
+    const contact = { 'prenom': firstName, 'nom': lastName, 'adresse': street, 'ville': city, 'adresse electonique': email }
+    alert(contact)
+
+    sendOrder(contact)
+}
+
+const sendOrder = (contact) => {
+    const order_id = Math.random() * (999999 - 10000) + 10000
+    const order = JSON.parse(localStorage.getItem('cart'))
+    const value = JSON.stringify({ contact, order, order_id })
+
+    localStorage.setItem('order', value)
+
 }
