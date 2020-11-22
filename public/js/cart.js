@@ -4,7 +4,8 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
-//fonction inserer image:
+//fonction inserer lignes du cart:
+
 
 const insertTeddy = (id, imgSource, name, color, quantity, price) => {
 
@@ -81,9 +82,25 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     buttonsContainer.setAttribute("class", 'btn-group')
     const removeButton = document.createElement("a")
     removeButton.setAttribute("class", "btn btn-light")
-
     removeButton.innerHTML = "Remove Article"
-    //removeButton.addEventListener("click", deleteFromCartFunction())
+
+
+    const array = [id, color]
+    removeButton.setAttribute("id", array)
+    const remove = removeButton.getAttribute("id")
+    console.log('var remove:' + remove)
+    console.log('var type: ' + typeof (remove))
+
+    const arraySplit = remove.split(',')
+    console.log('var arraySplit:' + arraySplit)
+    console.log('var type: ' + typeof (arraySplit))
+
+
+    deleteFromCartFunction(arraySplit)
+
+    //removeButton.addEventListener("click", deleteFromCartFunction(arraySplit))
+
+
 
     buttonsContainer.appendChild(removeButton)
     rowButtons.appendChild(buttonsContainer)
@@ -105,7 +122,6 @@ const buildMyCart = () => {
         console.log(c)
         insertTeddy(teddy._id, teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
         total(teddy.price / 100 * c.quantity)
-
     })
 
 }
@@ -121,10 +137,17 @@ const total = (price) => {
 }
 
 
-const deleteFromCartFunction = () => (
-    //localStorage.removeItem(removeItem)
-    console.log("blabla")
-)
+const deleteFromCartFunction = (array) => {
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    console.log(cart)
+
+    let result = cart.filter((item) => item._id === array[0] && item.color === array[1])
+    console.log(result)
+
+}
+
+
+
 
 const validate = () => {
     var firstName = document.getElementById('first-name').value
