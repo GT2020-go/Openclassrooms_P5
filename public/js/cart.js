@@ -4,9 +4,22 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
+const deleteFromCartFunction = (id, color) => {
+    // const arraySplit = array.split(',')
+
+    const cart = JSON.parse(localStorage.getItem('cart'))
+    console.log(cart)
+
+    const result = cart.filter((item) => item._id !== id || item.color !== color)
+
+    console.log('result :' + result)
+
+    localStorage.setItem('cart', JSON.stringify(result))
+    location.reload()
+}
+
+
 //fonction inserer lignes du cart:
-
-
 const insertTeddy = (id, imgSource, name, color, quantity, price) => {
 
     const rowProduct = document.createElement("div")
@@ -85,22 +98,14 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     removeButton.innerHTML = "Remove Article"
 
 
-    const array = [id, color]
-    removeButton.setAttribute("id", array)
-    const remove = removeButton.getAttribute("id")
-    console.log('var remove:' + remove)
-    console.log('var type: ' + typeof (remove))
+    // const array = [id, color]
+    // removeButton.setAttribute("id", array)
+    // const remove = removeButton.getAttribute("id")
+    // console.log('var remove:' + remove)
+    // console.log('var type: ' + typeof (remove))
+    console.log(id + " " + color)
 
-    const arraySplit = remove.split(',')
-    console.log('var arraySplit:' + arraySplit)
-    console.log('var type: ' + typeof (arraySplit))
-
-
-    deleteFromCartFunction(arraySplit)
-
-    //removeButton.addEventListener("click", deleteFromCartFunction(arraySplit))
-
-
+    removeButton.addEventListener("click", () => deleteFromCartFunction(id, color))
 
     buttonsContainer.appendChild(removeButton)
     rowButtons.appendChild(buttonsContainer)
@@ -136,19 +141,6 @@ const total = (price) => {
     console.log(start)
 }
 
-
-const deleteFromCartFunction = (array) => {
-    let cart = JSON.parse(localStorage.getItem('cart'))
-    console.log(cart)
-
-    let result = cart.filter((item) => item._id === array[0] && item.color === array[1])
-    console.log(result)
-
-}
-
-
-
-
 const validate = () => {
     var firstName = document.getElementById('first-name').value
     var nameRGEX = /^[a-zA-Z ]+$/
@@ -181,17 +173,40 @@ const validate = () => {
     var cityResult = cityRGEX.test(city)
     alert("city: " + cityResult)
 
-    const contact = { 'prenom': firstName, 'nom': lastName, 'adresse': street, 'ville': city, 'adresse electonique': email }
+    const contact = { 'firstName': firstName, 'lastName': lastName, 'adress': street, 'city': city, 'email': email }
     alert(contact)
 
-    sendOrder(contact)
+    // form(contact)
 }
 
-const sendOrder = (contact) => {
-    const order_id = Math.random() * (999999 - 10000) + 10000
-    const order = JSON.parse(localStorage.getItem('cart'))
-    const value = JSON.stringify({ contact, order, order_id })
+// const form = () => {
+//     const order_id = Math.random() * (999999 - 10000) + 10000
+//     const order = JSON.parse(localStorage.getItem('cart'))
+//     const value = JSON.stringify({ contact, order })
+//     localStorage.setItem('order', value)
+// }
 
-    localStorage.setItem('order', value)
 
-}
+// var form = new FormData(
+//     'contact': {
+//     'firstName': 'string', 'lastName': 'string',
+//     'address': 'string',
+//     'city': 'string',
+//     'email': 'string'
+// },
+//     'products': ['string'])
+
+// fetch('/order ', {
+//     method: "POST",
+//     body: form
+// })
+
+
+// contact: {
+//     * firstName: string,
+//     * lastName: string,
+//     * address: string,
+//     * city: string,
+//     * email: string
+//         * }
+//     * products: [string] < --array of product _id
