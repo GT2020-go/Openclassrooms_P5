@@ -176,7 +176,7 @@ const validate = () => {
     const contact = { 'firstName': firstName, 'lastName': lastName, 'adress': street, 'city': city, 'email': email }
     alert(contact)
 
-    // form(contact)
+    console.log(contact)
 }
 
 // const form = () => {
@@ -187,19 +187,25 @@ const validate = () => {
 // }
 
 
-// var form = new FormData(
-//     'contact': {
-//     'firstName': 'string', 'lastName': 'string',
-//     'address': 'string',
-//     'city': 'string',
-//     'email': 'string'
-// },
-//     'products': ['string'])
 
-// fetch('/order ', {
-//     method: "POST",
-//     body: form
-// })
+var form = JSON.stringify({
+    "contact": {
+        "firstName": "G",
+        "lastName": "T",
+        "address": "rue abc 11",
+        "city": "VILLE",
+        "email": "email@email.com"
+    },
+    "products": ["5beaaa8f1c9d440000a57d95"]
+})
+
+fetch('api/teddies/order', {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json"
+    },
+    body: form
+})
 
 
 // contact: {
@@ -209,4 +215,4 @@ const validate = () => {
 //     * city: string,
 //     * email: string
 //         * }
-//     * products: [string] < --array of product _id
+// products: [string] < --array of product _id
