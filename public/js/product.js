@@ -27,6 +27,7 @@ fetch(productApiUrl)
     })
 
 
+
 //fonction inserer image:
 
 const insertImage = (imgClass, imgSource) => {

@@ -97,12 +97,6 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     removeButton.setAttribute("class", "btn btn-light")
     removeButton.innerHTML = "Remove Article"
 
-
-    // const array = [id, color]
-    // removeButton.setAttribute("id", array)
-    // const remove = removeButton.getAttribute("id")
-    // console.log('var remove:' + remove)
-    // console.log('var type: ' + typeof (remove))
     console.log(id + " " + color)
 
     removeButton.addEventListener("click", () => deleteFromCartFunction(id, color))
@@ -124,7 +118,7 @@ const buildMyCart = () => {
     cart.map(async c => {
         const teddy = await getTeddiesById(c._id)
         console.log(teddy)
-        console.log(c)
+        console.log(c._id)
         insertTeddy(teddy._id, teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
         total(teddy.price / 100 * c.quantity)
     })
@@ -141,73 +135,73 @@ const total = (price) => {
     console.log(start)
 }
 
-const validate = () => {
+const validate = (e) => {
+    e.preventDefault();
+    console.log(e)
     var firstName = document.getElementById('first-name').value
     var nameRGEX = /^[a-zA-Z ]+$/
     var firstNameResult = nameRGEX.test(firstName)
-    alert("first name: " + firstNameResult)
+
+    alert(firstNameResult)
 
     var lastName = document.getElementById('last-name').value
     var nameRGEX = /^[a-zA-Z ]+$/
     var lastNameResult = nameRGEX.test(lastName)
-    alert("last name: " + lastNameResult)
 
     var email = document.getElementById('email').value
     var emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     var emailResult = emailRGEX.test(email)
-    alert("email: " + emailResult)
 
     var street = document.getElementById('street').value
     var streetRGEX = /^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$/
     var streetResult = streetRGEX.test(street)
-    alert("street: " + streetResult)
-
-
-    var postCode = document.getElementById('post-code').value
-    var postCodeRGEX = /^[0-9]+$/
-    var postCodeResult = postCodeRGEX.test(postCode)
-    alert("post code: " + postCodeResult)
 
     var city = document.getElementById('city').value
     var cityRGEX = /^[a-zA-Z ]+$/
     var cityResult = cityRGEX.test(city)
-    alert("city: " + cityResult)
 
     const contact = { 'firstName': firstName, 'lastName': lastName, 'adress': street, 'city': city, 'email': email }
-    alert(contact)
 
     console.log(contact)
+
+    console.log(document.getElementById('email').value)
 }
 
-// const form = () => {
-//     const order_id = Math.random() * (999999 - 10000) + 10000
-//     const order = JSON.parse(localStorage.getItem('cart'))
-//     const value = JSON.stringify({ contact, order })
-//     localStorage.setItem('order', value)
-// }
-
-
-
-var form = JSON.stringify({
-    "contact": {
-        "firstName": "G",
-        "lastName": "T",
-        "address": "rue abc 11",
-        "city": "VILLE",
-        "email": "email@email.com"
-    },
-    "products": ["5beaaa8f1c9d440000a57d95"]
+//order: array of products
+let order = []
+const cart = JSON.parse(localStorage.getItem('cart'))
+cart.map(async c => {
+    await getTeddiesById(c._id)
+    order.push(c._id)
 })
 
-fetch('api/teddies/order', {
-    method: "POST",
-    headers: {
-        "Content-type": "application/json"
-    },
-    body: form
-})
+//checkout button action:
+document.getElementById('submit-button').addEventListener("click", () => checkout())
 
+const checkout = () => {
+    var form = JSON.stringify({
+        "contact": {
+            "firstName": document.getElementById('first-name').value,
+            "lastName": document.getElementById('last-name').value,
+            "address": document.getElementById('street').value,
+            "city": document.getElementById('city').value,
+            "email": document.getElementById('email').value
+        },
+        "products": order
 
+    })
+
+    console.log(form)
+
+    fetch('api/teddies/order', {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: form
+    }).then(resp => console.log(resp))
+
+}
 // contact: {
 //     * firstName: string,
 //     * lastName: string,
