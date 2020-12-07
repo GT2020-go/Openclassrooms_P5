@@ -13,8 +13,11 @@ const deleteFromCartFunction = (id, color) => {
     const result = cart.filter((item) => item._id !== id || item.color !== color)
 
     console.log('result :' + result)
-
-    localStorage.setItem('cart', JSON.stringify(result))
+    if (result.length !== 0) {
+        localStorage.setItem('cart', JSON.stringify(result))
+    } else {
+        localStorage.removeItem('cart')
+    }
     location.reload()
 }
 
@@ -135,6 +138,8 @@ const total = (price) => {
     console.log(start)
 }
 
+
+// supprimer les const
 const validate = (e) => {
     e.preventDefault();
     console.log(e)
@@ -178,6 +183,17 @@ cart.map(async c => {
 //checkout button action:
 document.getElementById('submit-button').addEventListener("click", () => checkout())
 
+const confirmation = () => {
+
+    const orderNumber = Math.floor(Math.random() * (99999999 - 10000000) + 10000000)
+    const orderTotal = +document.getElementById("total").innerHTML
+
+    localStorage.setItem('orderConfirmation', JSON.stringify([orderNumber, orderTotal]))
+
+    window.location.replace("order.html");
+
+}
+
 const checkout = () => {
     var form = JSON.stringify({
         "contact": {
@@ -201,12 +217,5 @@ const checkout = () => {
         body: form
     }).then(resp => console.log(resp))
 
+    confirmation()
 }
-// contact: {
-//     * firstName: string,
-//     * lastName: string,
-//     * address: string,
-//     * city: string,
-//     * email: string
-//         * }
-// products: [string] < --array of product _id
