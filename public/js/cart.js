@@ -188,7 +188,7 @@ const confirmation = () => {
     const orderNumber = Math.floor(Math.random() * (99999999 - 10000000) + 10000000)
     const orderTotal = +document.getElementById("total").innerHTML
 
-    localStorage.setItem('orderConfirmation', JSON.stringify([orderNumber, orderTotal]))
+    localStorage.setItem('orderConfirmation', JSON.stringify({ "orderNumber": orderNumber, "orderTotal": orderTotal }))
 
     window.location.replace("order.html");
 

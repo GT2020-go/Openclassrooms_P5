@@ -368,6 +368,13 @@ template {
   background: #229fef;
 }
 
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .card-product .img-wrap {
   border-radius: 3px 3px 0 0;
   overflow: hidden;
