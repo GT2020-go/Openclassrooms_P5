@@ -4,7 +4,6 @@ const productApiUrl = 'api/teddies/' + teddyId
 fetch(productApiUrl)
     .then(data => data.json())
 
-    //teddy est un objet: pas besoin de passer par map >> on recupere direct les values avec teddy.key
     .then(teddy => {
 
         insertImage("img", teddy.imageUrl)
@@ -21,7 +20,6 @@ fetch(productApiUrl)
 
         x.addEventListener("click", addToCartFunction);
     })
-
 
 
 //fonction inserer image:

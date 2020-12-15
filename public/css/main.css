@@ -26,9 +26,8 @@ body {
    */
 main {
   display: block;
-  max-height: 100%;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 56px;
 }
 
 /**

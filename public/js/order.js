@@ -11,3 +11,4 @@ const buildConfirmation = () => {
 
 buildConfirmation()
 
+document.getElementById("home-link").addEventListener("click", () => localStorage.removeItem('orderConfirmation'))

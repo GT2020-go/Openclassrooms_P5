@@ -4,7 +4,6 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
-
 // fonction: supprimer lignes du cart:
 const deleteFromCartFunction = (id, color) => {
     const cart = JSON.parse(localStorage.getItem('cart'))
@@ -63,7 +62,6 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     columnXsColor.appendChild(itemColor)
     rowProduct.appendChild(columnXsColor)
 
-
     // incl. qty:
     const columnXsQuantity = document.createElement("div")
     columnXsQuantity.setAttribute("class", 'col-xs')
@@ -84,10 +82,7 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     columnXsPrice.appendChild(itemPrice)
     rowProduct.appendChild(columnXsPrice)
 
-
-
     //buttons to remove products:
-
     const rowButtons = document.createElement("div")
     rowButtons.setAttribute("class", 'container productContols')
 
@@ -121,9 +116,7 @@ const buildMyCart = () => {
 
 }
 
-
 buildMyCart()
-
 
 const total = (price) => {
     const start = +document.getElementById("total").innerHTML
