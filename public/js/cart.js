@@ -4,15 +4,13 @@ const getTeddiesById = async (id) => {
     return await response.json();
 }
 
-const deleteFromCartFunction = (id, color) => {
-    // const arraySplit = array.split(',')
 
+// fonction: supprimer lignes du cart:
+const deleteFromCartFunction = (id, color) => {
     const cart = JSON.parse(localStorage.getItem('cart'))
-    console.log(cart)
 
     const result = cart.filter((item) => item._id !== id || item.color !== color)
 
-    console.log('result :' + result)
     if (result.length !== 0) {
         localStorage.setItem('cart', JSON.stringify(result))
     } else {
@@ -20,7 +18,6 @@ const deleteFromCartFunction = (id, color) => {
     }
     location.reload()
 }
-
 
 //fonction inserer lignes du cart:
 const insertTeddy = (id, imgSource, name, color, quantity, price) => {
@@ -100,8 +97,6 @@ const insertTeddy = (id, imgSource, name, color, quantity, price) => {
     removeButton.setAttribute("class", "btn btn-light")
     removeButton.innerHTML = "Remove Article"
 
-    console.log(id + " " + color)
-
     removeButton.addEventListener("click", () => deleteFromCartFunction(id, color))
 
     buttonsContainer.appendChild(removeButton)
@@ -120,8 +115,6 @@ const buildMyCart = () => {
     }
     cart.map(async c => {
         const teddy = await getTeddiesById(c._id)
-        console.log(teddy)
-        console.log(c._id)
         insertTeddy(teddy._id, teddy.imageUrl, teddy.name, c.color, c.quantity, teddy.price)
         total(teddy.price / 100 * c.quantity)
     })
@@ -135,14 +128,11 @@ buildMyCart()
 const total = (price) => {
     const start = +document.getElementById("total").innerHTML
     document.getElementById("total").innerHTML = start + +price + '.00 '
-    console.log(start)
 }
 
 
 // supprimer les const
 const validate = () => {
-    // e.preventDefault();
-    // console.log(e)
     let firstName = document.getElementById('first-name').value
     let nameRGEX = /^[a-zA-Z ]+$/
     let firstNameResult = nameRGEX.test(firstName)
@@ -173,8 +163,6 @@ const validate = () => {
 
 }
 
-
-
 //order: array of products
 let order = []
 const cart = JSON.parse(localStorage.getItem('cart'))
@@ -182,10 +170,6 @@ cart.map(async c => {
     await getTeddiesById(c._id)
     order.push(c._id)
 })
-
-
-
-
 
 
 const confirmation = () => {
@@ -199,9 +183,7 @@ const confirmation = () => {
 
 }
 
-
 const checkout = () => {
-
     if (validate() == false) {
         window.location.reload()
     } else {
@@ -216,8 +198,6 @@ const checkout = () => {
             "products": order
 
         })
-
-        console.log(form)
 
         fetch('api/teddies/order', {
             method: "POST",

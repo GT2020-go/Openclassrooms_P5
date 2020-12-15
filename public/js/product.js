@@ -1,10 +1,6 @@
-const productId = new URL(window.location.href);
-teddyId = productId.searchParams.get("id");
-console.log(teddyId);
-
+const productId = new URL(window.location.href)
+teddyId = productId.searchParams.get("id")
 const productApiUrl = 'api/teddies/' + teddyId
-console.log(productApiUrl)
-
 fetch(productApiUrl)
     .then(data => data.json())
 
@@ -81,7 +77,6 @@ const addToCartFunction = (id, color, qty) => {
 
 
     if (cartItem.some(cart => cart._id === id && cart.color === color)) {
-        console.log('test')
         cartItem.map(cart => {
             if (cart._id === id && cart.color === color) {
                 cart.quantity += qty
