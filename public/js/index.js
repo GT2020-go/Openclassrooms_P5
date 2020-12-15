@@ -37,9 +37,7 @@ fetch('api/teddies')
         bottomWrap.setAttribute("class", "bottom-wrap")
         cardContainer.appendChild(bottomWrap)
 
-
         const productUrl = new URL('/product.html?id=' + teddy._id, 'http://localhost:3000') //update product url with id
-
 
         const orderButton = document.createElement("a")
         orderButton.setAttribute("class", "btn btn-sm btn-primary float-right")

@@ -140,37 +140,40 @@ const total = (price) => {
 
 
 // supprimer les const
-const validate = (e) => {
-    e.preventDefault();
-    console.log(e)
-    var firstName = document.getElementById('first-name').value
-    var nameRGEX = /^[a-zA-Z ]+$/
-    var firstNameResult = nameRGEX.test(firstName)
+const validate = () => {
+    // e.preventDefault();
+    // console.log(e)
+    let firstName = document.getElementById('first-name').value
+    let nameRGEX = /^[a-zA-Z ]+$/
+    let firstNameResult = nameRGEX.test(firstName)
 
-    alert(firstNameResult)
+    let lastName = document.getElementById('last-name').value
+    let lastNameResult = nameRGEX.test(lastName)
 
-    var lastName = document.getElementById('last-name').value
-    var nameRGEX = /^[a-zA-Z ]+$/
-    var lastNameResult = nameRGEX.test(lastName)
+    let email = document.getElementById('email').value
+    let emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    let emailResult = emailRGEX.test(email)
 
-    var email = document.getElementById('email').value
-    var emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-    var emailResult = emailRGEX.test(email)
+    let street = document.getElementById('street').value
+    let streetRGEX = /^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$/
+    let streetResult = streetRGEX.test(street)
 
-    var street = document.getElementById('street').value
-    var streetRGEX = /^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$/
-    var streetResult = streetRGEX.test(street)
-
-    var city = document.getElementById('city').value
-    var cityRGEX = /^[a-zA-Z ]+$/
-    var cityResult = cityRGEX.test(city)
+    let city = document.getElementById('city').value
+    let cityRGEX = /^[a-zA-Z ]+$/
+    let cityResult = cityRGEX.test(city)
 
     const contact = { 'firstName': firstName, 'lastName': lastName, 'adress': street, 'city': city, 'email': email }
 
-    console.log(contact)
+    if (firstNameResult == false | lastNameResult == false | emailResult == false | streetResult == false | cityResult == false) {
+        alert("Please enter correct contact details")
+        return false
+    } else {
+        return true
+    }
 
-    console.log(document.getElementById('email').value)
 }
+
+
 
 //order: array of products
 let order = []
@@ -180,8 +183,10 @@ cart.map(async c => {
     order.push(c._id)
 })
 
-//checkout button action:
-document.getElementById('submit-button').addEventListener("click", () => checkout())
+
+
+
+
 
 const confirmation = () => {
 
@@ -194,28 +199,38 @@ const confirmation = () => {
 
 }
 
+
 const checkout = () => {
-    var form = JSON.stringify({
-        "contact": {
-            "firstName": document.getElementById('first-name').value,
-            "lastName": document.getElementById('last-name').value,
-            "address": document.getElementById('street').value,
-            "city": document.getElementById('city').value,
-            "email": document.getElementById('email').value
-        },
-        "products": order
 
-    })
+    if (validate() == false) {
+        window.location.reload()
+    } else {
+        let form = JSON.stringify({
+            "contact": {
+                "firstName": document.getElementById('first-name').value,
+                "lastName": document.getElementById('last-name').value,
+                "address": document.getElementById('street').value,
+                "city": document.getElementById('city').value,
+                "email": document.getElementById('email').value
+            },
+            "products": order
 
-    console.log(form)
+        })
 
-    fetch('api/teddies/order', {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: form
-    }).then(resp => console.log(resp))
+        console.log(form)
 
-    confirmation()
+        fetch('api/teddies/order', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: form
+        }).then(resp => console.log(resp))
+
+        confirmation()
+
+    }
 }
+
+//checkout button action:
+document.getElementById('submit-button').addEventListener("click", () => checkout())
