@@ -127,7 +127,9 @@ const validate = () => {
     (streetResult == false) |
     (cityResult == false)
   ) {
-    alert("Please enter correct contact details");
+    alert(
+      "Some of the data you entered are not at the right format: Please enter correct contact details"
+    );
     return false;
   } else {
     return true;
@@ -153,7 +155,7 @@ const confirmation = () => {
 };
 const checkout = () => {
   if (validate() == false) {
-    window.location.reload();
+    return false;
   } else {
     const form = JSON.stringify({
       contact: {
