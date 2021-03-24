@@ -1,3 +1,6 @@
+In this project I built the front end of the e-commerce site of Orinoco based on the API.
+
+
 # Orinoco #
 
 This is the back end server for Project 5 of the Junior Web Developer path.
